@@ -17,7 +17,7 @@ class screen():
         self.label_Score.pack() 
 
         self.Snake = Cobra.snake(self.canvas)
-        self.Snake.draw_Snake()
+        #self.Snake.draw_Snake()
 
         self.end = False
 
@@ -30,6 +30,8 @@ class screen():
 
     def play(self, event = None):
 
+        self.canvas.delete('snake')
+
         if event.keysym == 'Left':
             self.Snake.move_Left()
         elif event.keysym == 'Right':
@@ -41,8 +43,9 @@ class screen():
         else:
             self.master.quit()
         
-        self.canvas.delete('snake')
-        self.Snake.draw_Snake()
+        
+        #self.canvas.delete('snake')
+        #self.Snake.draw_Snake()
 
 if __name__ == '__main__':
     master = tkinter.Tk() 

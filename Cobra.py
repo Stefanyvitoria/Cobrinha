@@ -1,27 +1,31 @@
 class snake():
     def __init__(self, master):
         self.master = master
-        self.tail = (100,100)
-        #self.head = (100,100)
-        self.len = 5
-        self.body =None#  [None]*self.len
+        self.head = (100,100,110,110)
+        self.len = 3
+        self.body =[None]*self.len
+        self.draw_Snake()
 
-    def draw_Snake(self):
-        self.body = self.master.create_rectangle(self.tail,(self.tail[0]+10,self.tail[1]+10), tag='snake', fill='black')
-
+    def draw_Snake(self, Aux='L'):
+        if Aux == 'L' or Aux == 'R':
+            for i in range(self.len):
+                self.body = self.master.create_rectangle((self.head[0]+(10*i), self.head[1]), (self.head[2]+(10*i),self.head[3]), tag='snake')#, fill='black')
+        elif Aux == 'U' or Aux == 'D':
+            for i in range(self.len):
+                self.body = self.master.create_rectangle((self.head[0], self.head[1]+(10*i)), (self.head[2],self.head[3]+(10*i)), tag='snake')#, fill='black')
 
     def move_Left(self):
-        self.tail = (self.tail[0]-10, self.tail[1])
-        #print(f"moveu left")
+        self.head = (self.head[0]-10, self.head[1], self.head[2]-10, self.head[3])
+        self.draw_Snake('L')
 
     def move_Right(self):
-        self.tail = (self.tail[0]+10, self.tail[1])
-        #print(f"moveu Right")
+        self.head = (self.head[0]+10, self.head[1], self.head[2]+10, self.head[3])
+        self.draw_Snake('R')
     
     def move_Up(self):
-        self.tail = (self.tail[0], self.tail[1]-10)
-        #print(f"moveu up")
+        self.head = (self.head[0], self.head[1]-10, self.head[2], self.head[3]-10)
+        self.draw_Snake('U')
     
     def move_Donw(self):
-        self.tail = (self.tail[0], self.tail[1]+10)
-        #print(f"moveu down")
+        self.head = (self.head[0], self.head[1]+10, self.head[2], self.head[3]+10)
+        self.draw_Snake('D')
