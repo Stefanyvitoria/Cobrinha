@@ -1,4 +1,4 @@
-import tkinter, Snake, time
+import tkinter, Snake, time, Fruit
 
 class screen():
     def __init__(self, master):
@@ -18,6 +18,8 @@ class screen():
 
         self.Snake = Snake.snake(self.canvas)
         #self.Snake.draw_Snake()
+        self.fruit = Fruit.fruit(self.canvas)
+        
 
         self.end = False
 
@@ -38,9 +40,13 @@ class screen():
             self.Snake.move_Up()
         elif event.keysym == 'Down':
             self.Snake.move_Donw()
+        
+        elif event.keysym == 'Return'or event.keysym == 'KP_Enter':
+            self.fruit.new_aplle()
         else:
             #self.Snake.add_Snake()
             self.master.quit()
+            pass
         
 
 if __name__ == '__main__':
