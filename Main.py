@@ -32,34 +32,46 @@ class screen():
     def play(self, event = None):
 
         if event.keysym == 'Left':
-            self.Snake.move_Left()
-            if self.Snake.detect_Coli_Self(): self.game_Over()
+            self.Snake.move_Left() #Move
+            if self.Snake.detect_Coli(): self.game_Over() #check colid        
+            self.snake_Eat_aplle() #Check colid aplle
 
         elif event.keysym == 'Right':
             self.Snake.move_Right()
-            if self.Snake.detect_Coli_Self(): self.game_Over()
-        
+            if self.Snake.detect_Coli(): self.game_Over()
+            self.snake_Eat_aplle()
+
         elif event.keysym == 'Up':
             self.Snake.move_Up()
-            if self.Snake.detect_Coli_Self(): self.game_Over()
-      
+            if self.Snake.detect_Coli(): self.game_Over()
+            self.snake_Eat_aplle()
+
         elif event.keysym == 'Down':
             self.Snake.move_Donw()
-            if self.Snake.detect_Coli_Self(): self.game_Over()
-        
+            if self.Snake.detect_Coli(): self.game_Over()
+            self.snake_Eat_aplle()
+
         elif event.keysym == 'Return'or event.keysym == 'KP_Enter':
-            self.fruit.new_aplle()
-            
-            self.Snake.move_Left()
+            pass
+
         else:
-            self.Snake.add_Snake()
             pass
     
     def game_Over(self):
-        print("Game Over")
         self.master.quit()
 
-        
+    def snake_Eat_aplle(self):
+        if self.fruit.coord_aplle == self.Snake.head:
+            #Score
+            self.label_Score.destroy()
+            self.score += 1
+            self.label_Score = tkinter.Label(self.master, text=f'Score: {self.score}')
+            self.label_Score.pack()
+            #Update            
+            self.fruit.new_aplle()
+            self.Snake.add_Snake()
+            
+                
 
 if __name__ == '__main__':
     master = tkinter.Tk() 

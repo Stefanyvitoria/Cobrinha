@@ -61,8 +61,9 @@ class snake():
         self.len += 1
         #print(self.snake_Body)
 
-    def detect_Coli_Self(self):
+    def detect_Coli(self):
         if list(self.head) in self.coord_snake:
-            #print('colidiu')
+            return True
+        elif self.head[0] > 490 or self.head[1] > 490 or self.head[0] < 0 or self.head[1] < 0 :
             return True
         return False
