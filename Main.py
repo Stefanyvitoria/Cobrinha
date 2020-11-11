@@ -17,7 +17,6 @@ class screen():
         self.label_Score.pack() 
 
         self.Snake = Snake.snake(self.canvas)
-        #self.Snake.draw_Snake()
         self.fruit = Fruit.fruit(self.canvas)
         
 
@@ -43,6 +42,7 @@ class screen():
         
         elif event.keysym == 'Return'or event.keysym == 'KP_Enter':
             self.fruit.new_aplle()
+            self.Snake.move_Left()
         else:
             #self.Snake.add_Snake()
             self.master.quit()
