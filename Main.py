@@ -33,20 +33,32 @@ class screen():
 
         if event.keysym == 'Left':
             self.Snake.move_Left()
+            if self.Snake.detect_Coli_Self(): self.game_Over()
+
         elif event.keysym == 'Right':
             self.Snake.move_Right()
+            if self.Snake.detect_Coli_Self(): self.game_Over()
+        
         elif event.keysym == 'Up':
             self.Snake.move_Up()
+            if self.Snake.detect_Coli_Self(): self.game_Over()
+      
         elif event.keysym == 'Down':
             self.Snake.move_Donw()
+            if self.Snake.detect_Coli_Self(): self.game_Over()
         
         elif event.keysym == 'Return'or event.keysym == 'KP_Enter':
             self.fruit.new_aplle()
+            
             self.Snake.move_Left()
         else:
-            #self.Snake.add_Snake()
-            self.master.quit()
+            self.Snake.add_Snake()
             pass
+    
+    def game_Over(self):
+        print("Game Over")
+        self.master.quit()
+
         
 
 if __name__ == '__main__':
