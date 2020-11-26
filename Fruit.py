@@ -9,10 +9,10 @@ class fruit():
         self.new_aplle()
         
     def draw_Aplle(self):
-        self.master.create_oval(self.x, self.y, self.x+10, self.y+10, tag='aplle', fill='red')
+        self.master.create_oval(self.x, self.y, self.x+10, self.y+10, tag='aplle', fill='red') #Draw
     
-    def new_aplle(self, snake=[]):
-        self.master.delete('aplle')
+    def new_aplle(self):
+        self.master.delete('aplle') #del
         self.x = random.randint(0,49)*10
         self.y = random.randint(0,49)*10
         self.coord_aplle = (self.x, self.y,self.x+10, self.y+10)
